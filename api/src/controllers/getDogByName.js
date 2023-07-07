@@ -8,6 +8,7 @@ const getDogByName = async (req, res) => {
 
         if (name) {
             const allDogsName = allDogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()));
+            //? Filtro los nombres de todos lo perros parseandolos a minusculas para hacer una comparacion parcial con la busqueda
             return allDogsName.length
                 ? res.status(200).json(allDogsName)
                 : res.status(404).json({ message: "There aren't dogs with that name" });

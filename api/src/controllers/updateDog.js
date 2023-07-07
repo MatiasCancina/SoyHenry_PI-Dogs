@@ -1,10 +1,10 @@
 const { Dog } = require("../db")
 
 const updateDog = async (req, res) => {
+    const { id } = req.params;
+
     try {
-        const { id } = req.params;
-        console.log(id);
-        const updatedDog = await Dog.update({ ...req.body }, {
+        const updatedDog = await Dog.update({ ...req.body }, {  //? guarda una copia de todo el perro para poder modifficar cualquiera de sus propiedades 
             returning: true,
             where: {
                 id: id
@@ -13,7 +13,7 @@ const updateDog = async (req, res) => {
 
         if (!updatedDog) return res.send('This dog does not exist')
 
-        return updatedDog.id !== 'number'
+        return updatedDog.id !== 'number'   //? si el es uuid (es de la DB) devuelve el perro actualiado, sino tira error 
             ? res.status(202).json(updatedDog[1][0] )
             : res.status(401).send('You can´t update this dog')
 
