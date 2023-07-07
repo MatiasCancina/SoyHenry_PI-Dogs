@@ -14,7 +14,7 @@ const getDogById = async (req, res) => {
             }
             //? si el id no es un entero, busca id como string  (en los de la DB)
             else {
-                dog = await dog.find((dog) = dog.id === id)
+                dog = await dogs.find((dog) => dog.id === id)
             }
             return dog
                 ? res.status(200).json(dog)

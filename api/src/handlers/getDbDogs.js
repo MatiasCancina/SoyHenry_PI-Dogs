@@ -1,9 +1,9 @@
-const {Dog,Temperaments} = require("../db")
+const {Dog,Temperament} = require("../db")
 
 const getDbDogs = async () => {
     const dbDogs = await Dog.findAll({
         include: {
-            model: Temperaments,
+            model: Temperament,
             attributes: ['name'],
             through: {
                 attributes: [],
@@ -18,7 +18,7 @@ const getDbDogs = async () => {
             height: dog.height,
             life_span: dog.life_span,
             image: dog.image,
-            temperament: dog.temperaments?.map(temperament => temperament.name)
+            temperaments: dog.temperaments?.map(temperament => temperament.name)
         }
     })
     return dogs;
