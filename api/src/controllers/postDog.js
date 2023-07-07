@@ -1,16 +1,17 @@
 const { Dog, Temperament } = require("../db");
-const { getAllTemps } = require("./getAllTemps");
+// const { getAllTemps } = require("./getAllTemps");
 
 const postDog = async (req, res) => {
+    const {
+        name,
+        height,
+        weight,
+        life_span,
+        image,
+        temperaments,
+    } = req.body
+
     try {
-        const {
-            name,
-            height,
-            weight,
-            life_span,
-            image,
-            temperaments,
-        } = req.body
 
         //? Buscamoos si ya existe un perro con el mismo nombre en la base de datos
         const dbDogs = Dog.findOne({
@@ -18,7 +19,7 @@ const postDog = async (req, res) => {
                 name
             },
         });
-        
+
         if (dbDogs.length) return res.status(400).send('There is already a dog with that name');
 
         const newDog = await Dog.create({
@@ -26,7 +27,10 @@ const postDog = async (req, res) => {
             height: height,
             weight: weight,
             life_span: life_span,
-            image: image
+            image: image //? si se pasa una imagen la pone y no sino pone una imagen por default    
+                ? image 
+                : `https://www.dogalize.com/wp-content/uploads/2017/09/Dog.png` ,
+            temperaments: temperaments
         })
 
         const uniqueTemp = new Set(temperaments)
@@ -48,7 +52,7 @@ const postDog = async (req, res) => {
         }
 
         await newDog.addTemperaments(dogTemperaments)
-        return res.status(201).json({ dog: newDog, })
+        return res.status(201).json(newDog)
 
         // //? Verifico si la tabla de temperamentos esté cargada usando count(), de no estar cargada, la creamos
         // //? invocando a getAllTemps
@@ -67,7 +71,7 @@ const postDog = async (req, res) => {
         // //     }
         // //     tempsFound.push(tempFound);
         // // }
-        
+
         // //? Añadimos el temperamento mediante método add de SQL, gracias a la relación entre Dog y Temperament
         // await newDog.addTemperaments(temperaments);
 

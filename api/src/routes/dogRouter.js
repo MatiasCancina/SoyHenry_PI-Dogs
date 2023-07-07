@@ -10,7 +10,7 @@ const router = Router();
 
     router.get('/', getDogByName)
     router.post('/', validateDogMiddleware, postDog)
-    router.put('/', updateDog)
+    router.put('/:id', updateDog)
     router.get('/:id', getDogById)
     router.delete('/:id', deleteDog)
     

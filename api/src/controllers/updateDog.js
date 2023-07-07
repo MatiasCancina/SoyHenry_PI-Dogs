@@ -2,8 +2,8 @@ const { Dog } = require("../db")
 
 const updateDog = async (req, res) => {
     try {
-        const { id } = req.params
-
+        const { id } = req.params;
+        console.log(id);
         const updatedDog = await Dog.update({ ...req.body }, {
             returning: true,
             where: {
@@ -11,10 +11,10 @@ const updateDog = async (req, res) => {
             }
         })
 
-        if (!updatedDog.id) return res.send('This dog does not exist')
+        if (!updatedDog) return res.send('This dog does not exist')
 
         return updatedDog.id !== 'number'
-            ? res.status(202).json(updatedDog[1][0])
+            ? res.status(202).json(updatedDog[1][0] )
             : res.status(401).send('You can´t update this dog')
 
     } catch (error) {
