@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('../assets/home_img2.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
+  background-position: center center;
 }
 
 .App-logo {
