@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { getAllDogs } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import NavBar from '../NavBar/NavBar';
 import style from './Home.module.css';
-import Card from '../Card/Card';
-import SearchBar from '../SearchBar/SearchBar';
+import Cards from '../Cards/Cards';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -14,8 +14,8 @@ const Home = () => {
 
     return (
         <div className={style.homeContainer}>
-            <SearchBar/>
-            <Card/>
+            <NavBar/>
+            <Cards/>
         </div>
     )
 }
