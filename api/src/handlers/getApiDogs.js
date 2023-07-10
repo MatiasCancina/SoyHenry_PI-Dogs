@@ -13,7 +13,7 @@ const getApiDogs = async () => {
                 image: dog.image.url,
                 height: dog['height']['metric'],
                 weight: dog['weight']['metric'],
-                temperament: dog?.temperament?.split(',').map(temperament => temperament.trim())
+                temperament: dog?.temperament
             }
         }
     )
