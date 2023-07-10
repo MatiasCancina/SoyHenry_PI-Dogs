@@ -28,30 +28,9 @@ const postDog = async (req, res) => {
             image: image //? si se pasa una imagen la pone y no sino pone una imagen por default    
                 ? image
                 : `https://www.dogalize.com/wp-content/uploads/2017/09/Dog.png`,
-            temperaments: temperaments
         })
-
-        const uniqueTemp = new Set(temperaments)    //? variable donde se almacenaran solamente valores unicos de lo que se establezca como temperaments 
-     
-        const dogTemperaments = [] //?Array donde se pushean los temperamentos del perro
-
-        for (const temperamentName of uniqueTemp) { 
-            let temperament = await Temperament.findOne({   //? recorre el array de temperamentos unicos para buscar coincidencias en el modelo de Temperament 
-                where: {
-                    name: temperamentName,
-                },
-            });
-
-            if (!temperament) { //? si el temperamento no existe, lo crea en la base de datos de Temperament 
-                temperament = await Temperament.create({
-                    name: temperamentName,
-                });
-            }
-
-            dogTemperaments.push(temperament)   //? se guarda el temperamento en  
-        }
-
-        await newDog.addTemperaments(dogTemperaments)
+        
+        await newDog.addTemperaments(temperaments)
 
         return res
             .status(201)
@@ -59,7 +38,7 @@ const postDog = async (req, res) => {
     }
     catch (error) {
         return res
-            .statu(500)
+            .status(500)
             .json({ error: error.message })
     }
 }
