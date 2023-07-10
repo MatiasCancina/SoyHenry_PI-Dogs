@@ -1,0 +1,20 @@
+.navbarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    width: 205vh;
+    background-color: #034078;
+    padding-block: 15px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    position: fixed;
+    top: 0;
+    z-index: 100;
+  }
+
+  .navLink{
+    font-size: xx-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    color: #fefcfb;
+  }
