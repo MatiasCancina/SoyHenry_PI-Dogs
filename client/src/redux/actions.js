@@ -20,13 +20,15 @@ export const getAllDogs = () => {
 
 export const getDogName = (name) => {
     const URL = `http://localhost:8080/dogs?name=${name}`;
-
     return async (dispatch) => {
-        const { data } = await axios(URL);
-
-        return dispatch({
-            type: TYPES.GET_DOG_NAME,
-            payload: data
-        })
+        try {
+            const { data } = await axios(URL);
+            return dispatch({
+                type: TYPES.GET_DOG_NAME,
+                payload: data
+            })
+        } catch (error) {
+            alert('That dog doesn´t exists')
+        }
     }
 } 
