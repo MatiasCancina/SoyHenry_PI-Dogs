@@ -11,7 +11,9 @@ const Card = () => {
                     ? dogs?.map(dog =>
                         <div className={style.cardContainer} key={dog.id}>
                             <h1>{dog.name}</h1>
-                            <img src={dog.image} alt={dog.name} />
+                            <div className={style.imageContainer}>
+                                <img  className={style.imagegti } src={dog.image} alt={dog.name} />
+                            </div>
                             <p>Weight: {dog.weight}</p>
                             <p>Height: {dog.height}</p>
                             <p>Temperaments: {dog.temperament}</p>

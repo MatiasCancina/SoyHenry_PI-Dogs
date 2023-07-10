@@ -13,7 +13,7 @@ const SearchBar = () => {
 
     const searchByName = (e) => {
         e.preventDefault();
-
+        
         dispatch(getDogName(name))
     }
 
