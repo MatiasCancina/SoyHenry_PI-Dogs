@@ -1,0 +1,23 @@
+.cardContainer {
+  display: inline-block;
+  width: 25%; /* Ajusta este valor según tus necesidades para mostrar 4 cartas por fila */
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.cardContainer h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.cardContainer img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cardContainer p {
+  font-size: 14px;
+}

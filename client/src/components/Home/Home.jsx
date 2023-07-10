@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { getAllDogs } from '../../redux/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import style from './Home.module.css';
+import Card from '../Card/Card';
 
 const Home = () => {
-    const dogs = useSelector(state => state.dogs)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -13,11 +13,7 @@ const Home = () => {
 
     return (
         <div className={style.homeContainer}>
-            {
-                dogs.length
-                    ? dogs?.map(dog => <p>{dog.name}</p>)
-                    : <p>loading</p>
-            }
+            <Card/>
         </div>
     )
 }
