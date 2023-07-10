@@ -12,13 +12,13 @@ const postDog = async (req, res) => {
 
     try {
         //? Buscamoos si ya existe un perro con el mismo nombre en la base de datos
-        const dbDogs = Dog.findOne({
+        const dbDogs = await Dog.findOne({
             where: {
                 name
             },
         });
 
-        if (dbDogs.length) return res.status(400).send('There is already a dog with that name');
+        if (dbDogs) return res.status(400).send('There is already a dog with that name');
 
         const newDog = await Dog.create({
             name: name,
@@ -27,7 +27,7 @@ const postDog = async (req, res) => {
             life_span: life_span,
             image: image //? si se pasa una imagen la pone y no sino pone una imagen por default    
                 ? image
-                : `https://www.dogalize.com/wp-content/uploads/2017/09/Dog.png`,
+                : `https://assets.stickpng.com/images/59f87a353cec115efb3623a4.png`,
         })
         
         await newDog.addTemperaments(temperaments)
