@@ -14,6 +14,7 @@ const Card = () => {
                             <img src={dog.image} alt={dog.name} />
                             <p>Weight: {dog.weight}</p>
                             <p>Height: {dog.height}</p>
+                            <p>Temperaments: {dog.temperament}</p>
                         </div>
                     )
                     : <p>LOADING</p>
