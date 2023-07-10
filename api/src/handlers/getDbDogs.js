@@ -1,7 +1,6 @@
 const { Dog, Temperament } = require("../db")
 
 const getDbDogs = async () => {
-    console.log('entre');
     const dbDogs = await Dog.findAll({
         include: {
             model: Temperament,
@@ -11,10 +10,6 @@ const getDbDogs = async () => {
             }
         }
     })
-    console.log('entre');
-
-
-    // dbDogs.forEach(dog =>console.log(dog.temperaments))
 
     const dogs = dbDogs.map(dog => {
         return {
