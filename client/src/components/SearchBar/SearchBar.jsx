@@ -13,20 +13,18 @@ const SearchBar = () => {
 
     const searchByName = (e) => {
         e.preventDefault();
-        
+
         dispatch(getDogName(name))
     }
 
     return (
-        <form onSubmit={searchByName}>
+        <form onSubmit={searchByName} className={style.searchbarCotainer}>
             <input
                 type='search'
                 value={name}
-                placeholder="Search..."
+                placeholder="Search...                      🔍︎"  
                 onChange={handleChange}
-                
             />
-
         </form>
     )
 }
