@@ -1,28 +1,20 @@
-import { useSelector } from 'react-redux';
 import style from './Card.module.css';
 
-const Card = () => {
-    const dogs = useSelector(state => state.dogs)
+export const Card = ({ dog }) => {
+    const tempResult = dog.temperament
+        ? dog.temperament
+        : (dog.temperaments
+            && dog.temperaments)
 
     return (
-        <div >
-            {
-                dogs.length
-                    ? dogs?.map(dog =>
-                        <div className={style.cardContainer} key={dog.id}>
-                            <h1>{dog.name}</h1>
-                            <div className={style.imageContainer}>
-                                <img  className={style.imagegti } src={dog.image} alt={dog.name} />
-                            </div>
-                            <p>Weight: {dog.weight}</p>
-                            <p>Height: {dog.height}</p>
-                            <p>Temperaments: {dog.temperament}</p>
-                        </div>
-                    )
-                    : <p>LOADING</p>
-            }
+        <div className={style.cardContainer} key={dog.id}>
+            <h1>{dog.name}</h1>
+            <img className={style.image} src={dog.image} alt={dog.name} />
+            <div className={style.dogInfo}>
+                <p>Weight: {dog.weight}</p>
+                <p>Height: {dog.height}</p>
+                <p>Temperaments: {tempResult}</p>
+            </div>
         </div>
     )
 }
-
-export default Card;
