@@ -2,8 +2,8 @@
   display: inline-block;
   box-sizing: border-box;
   text-align: center;
-  width: 360px;
-  height: 430px;
+  width: 290px;
+  height: 360px;
   padding: 10px;
   border-bottom: 100px;
 }
@@ -17,8 +17,8 @@
 
 .image {
   border-radius: 10px;
-  width: 250px;
-  height: 260px;
+  width: 180px;
+  height: 190px;
   object-fit: cover;
   object-position: center top;
   transition: all 0.4s ease;
