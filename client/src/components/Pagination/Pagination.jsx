@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Pagination.module.css';
 
-const Pagination = ({ count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler }) => {
+const Pagination = ({ count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler }) => {    //traigo todo lo que voy a usar del hook de Pagination 
 
     return (
         <div className={style.paginationContainer}>

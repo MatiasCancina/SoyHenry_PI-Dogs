@@ -8,14 +8,14 @@ const SearchBar = () => {
     const dispatch = useDispatch();
 
     const handleChange = (event) => {
-        setName(event.target.value);
-    }
+        setName(event.target.value); 
+    } 
 
     const searchByName = (e) => {
-        e.preventDefault();
+        e.preventDefault(); //evita que se refreshee la pag
 
         dispatch(getDogName(name))
-        setName("");
+        setName("");    //vacia el input despues de la busqueda
     }
 
     return (

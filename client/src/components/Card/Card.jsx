@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import style from './Card.module.css';
 
-export const Card = ({ dog }) => {
+export const Card = ({ dog }) => {  //? recibe dog por props de Cards
     const navigate = useNavigate()
 
     const navigateHandler = () => {
         navigate(`/details/${dog.id}`);
     }
 
-    const apiAndDbTemps = dog.temperament
+    const apiAndDbTemps = dog.temperament   //?guardo en la const un condicional para renderizar los temperamentos tanto de la api como la db
         ? dog.temperament
         : (
             dog.temperaments

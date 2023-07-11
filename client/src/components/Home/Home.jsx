@@ -8,7 +8,7 @@ import style from './Home.module.css';
 
 const Home = () => {
     const dispatch = useDispatch();
-    const { dogs, count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler } = usePagination()
+    const { dogs, count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler } = usePagination()    //destructuring de lo que voy a usar del hook de Pagination
 
     useEffect(() => {
         dispatch(getAllDogs())
