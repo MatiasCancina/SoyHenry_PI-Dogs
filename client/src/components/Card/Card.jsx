@@ -12,7 +12,6 @@ export const Card = ({ dog }) => {
             <img className={style.image} src={dog.image} alt={dog.name} />
             <div className={style.dogInfo}>
                 <p>Weight: {dog.weight}</p>
-                <p>Height: {dog.height}</p>
                 <p>Temperaments: {tempResult}</p>
             </div>
         </div>
