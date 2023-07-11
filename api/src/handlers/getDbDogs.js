@@ -6,7 +6,7 @@ const getDbDogs = async () => {
         include: {
             model: Temperament, //? se usa el include para obtener info de los temperamentos de cada perro 
             attributes: ['name'],   //? especificamente del atributo 'name' de ese temperamento
-            through: {  //? para NO incluir los atributos de la tabla de relacion entre ambos modelos 
+            through: {  //? para NO incluir ningun atributo de la tabla de relacion entre ambos modelos 
                 attributes: [],
             }
         }
