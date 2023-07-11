@@ -1,19 +1,20 @@
-import { useSelector } from 'react-redux';
 import { Card } from '../Card/Card';
 import style from './Cards.module.css';
 
-const Cards = () => {
-    const dogs = useSelector(state => state.dogs)
+const Cards = ({dogs}) => {
 
     return (
-        <div className={style.cardsContainer}>  
-            {
-                dogs.length
-                    ? dogs?.map(dog =>
-                        <Card dog={dog}/>
-                    )
-                    : <p>LOADING</p>
-            }
+        <div>
+
+            <div className={style.cardsContainer}>
+                {
+                    dogs.length
+                        ? dogs?.map(dog =>
+                            <Card key={dog.id} dog={dog} />
+                        )
+                        : <p>LOADING</p>
+                }
+            </div>
         </div>
     )
 }
