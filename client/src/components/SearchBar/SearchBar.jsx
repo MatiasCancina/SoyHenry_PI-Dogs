@@ -15,6 +15,7 @@ const SearchBar = () => {
         e.preventDefault();
 
         dispatch(getDogName(name))
+        setName("");
     }
 
     return (
@@ -22,7 +23,7 @@ const SearchBar = () => {
             <input
                 type='search'
                 value={name}
-                placeholder="Search...                      🔍︎"  
+                placeholder="Search...                      🔍︎"
                 onChange={handleChange}
             />
         </form>
