@@ -4,13 +4,13 @@ import style from './LandingPage.module.css';
 const LandingPage = () => {
     const navigate = useNavigate()
 
-    const goHomeHandler = () => {
+    const navigateHandler = () => {
         navigate('/home');
     }
 
     return (
         <div className={style.landingContainer}>
-            <button className={style.btn} onClick={goHomeHandler}>ENTER</button>
+            <button className={style.btn} onClick={navigateHandler}>ENTER</button>
         </div>
     )
 }
