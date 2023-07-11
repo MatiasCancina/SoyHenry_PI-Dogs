@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { getAllDogs } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
-import NavBar from '../NavBar/NavBar';
 import Cards from '../Cards/Cards';
 import { usePagination } from '../../utils/customHooks/usePagination';
 import Pagination from '../Pagination/Pagination';
@@ -11,14 +10,12 @@ const Home = () => {
     const dispatch = useDispatch();
     const { dogs, count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler } = usePagination()
 
-
     useEffect(() => {
         dispatch(getAllDogs())
     }, [dispatch])
 
     return (
         <div className={style.homeContainer}>
-            <NavBar />
             <Cards dogs={dogs} />
             <Pagination
                 count={count}
