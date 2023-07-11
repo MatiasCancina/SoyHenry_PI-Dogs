@@ -23,6 +23,7 @@
   object-position: center top;
   transition: all 0.4s ease;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .image:hover {
@@ -31,6 +32,7 @@
 
 .cardContainer p {
   font-size: 15px;
+  font-weight: 500;
 }
 
 .dogInfo {
