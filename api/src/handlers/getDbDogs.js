@@ -1,19 +1,20 @@
 const { Dog, Temperament } = require("../db")
 
 const getDbDogs = async () => {
-    const dbDogs = await Dog.findAll({
+
+    const dbDogs = await Dog.findAll({  //busca todos los perros de la db
         include: {
-            model: Temperament,
-            attributes: ['name'],
-            through: {
+            model: Temperament, //? se usa el include para obtener info de los temperamentos de cada perro 
+            attributes: ['name'],   //? especificamente del atributo 'name' de ese temperamento
+            through: {  //? para NO incluir los atributos de la tabla de relacion entre ambos modelos 
                 attributes: [],
             }
         }
     })
 
-    const dogs = dbDogs.map(dog => {
+    const dogs = dbDogs.map(dog => {    //? busca en la db para para luego poder mostrar las propiedades de la forma indicada en el post
 
-        let temps = ''; //se inicliaza vacia para guardar los temperamentos que se establezcan en el post  
+        let temps = ''; //? se inicializa vacia para guardar los temperamentos que se establezcan en el post  
 
         dog.temperaments.map(temp => {
             if (temps === '') { //si es el primer temperamento lo guarda directamente en la variable de arriba
@@ -31,7 +32,6 @@ const getDbDogs = async () => {
             life_span: dog.life_span,
             image: dog.image,
             temperaments: temps
-
         }
     })
 

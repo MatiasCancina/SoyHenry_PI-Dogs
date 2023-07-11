@@ -4,7 +4,7 @@ const URL = 'https://api.thedogapi.com/v1/breeds'
 
 const getApiDogs = async () => {
     const { data } = await axios(URL)
-    const infoApi = data.map(
+    const infoApi = data.map(   //por cada obj (dog) se trae las props indicadas
         (dog) => {
             return {
                 id: dog.id,
@@ -17,7 +17,6 @@ const getApiDogs = async () => {
             }
         }
     )
-
     return infoApi
 }
 
