@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import Cards from '../Cards/Cards';
 import { usePagination } from '../../utils/customHooks/usePagination';
 import Pagination from '../Pagination/Pagination';
+import Orders from '../Orders/Orders';
 import style from './Home.module.css';
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
 
     return (
         <div className={style.homeContainer}>
+            <Orders/>
             <Cards dogs={dogs} />
             <Pagination
                 count={count}

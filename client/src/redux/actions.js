@@ -2,7 +2,9 @@ import axios from 'axios';
 
 export const TYPES = {
     GET_ALL_DOGS: 'GET_ALL_DOGS',
-    GET_DOG_NAME: 'GET_DOG_NAME'
+    GET_DOG_NAME: 'GET_DOG_NAME',
+    ORDER_BY_NAME: 'ORDER_BY_NAME',
+    FILTER_BY_ORIGIN: 'FILTER_BY_ORIGIN'
 }
 
 export const getAllDogs = () => {
@@ -32,3 +34,17 @@ export const getDogName = (name) => {
         }
     }
 } 
+//*ORDERS
+export const orderByName = (order) => {
+    return {
+        type: TYPES.ORDER_BY_NAME,
+        payload: order
+    }
+}
+
+//*FILTERS
+export const filterbyOrigin = (origin) => {
+    return {
+
+    }
+}
