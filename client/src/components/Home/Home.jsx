@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
-import { getAllDogs } from '../../redux/actions';
+import { getAllDogs, getAllTemps } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import Cards from '../Cards/Cards';
 import { usePagination } from '../../utils/customHooks/usePagination';
 import Pagination from '../Pagination/Pagination';
-import Orders from '../FiltersAndOrders/Orders/Orders';
-import Filters from '../FiltersAndOrders/Filters/Filters';
+import FiltersAndOrders from '../FiltersAndOrders/FiltersAndOrders';
 import style from './Home.module.css';
 
 const Home = () => {
@@ -14,15 +13,12 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getAllDogs())
+        dispatch(getAllTemps())
     }, [dispatch])
 
     return (
         <div className={style.homeContainer}>
-            <div className={style.filtersAndOrders}>
-                <Orders />
-                <Filters />
-            </div>
-
+            <FiltersAndOrders />
             <Cards dogs={dogs} />
             <Pagination
                 count={count}
