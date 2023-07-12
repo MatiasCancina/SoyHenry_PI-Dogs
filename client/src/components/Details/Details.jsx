@@ -24,6 +24,8 @@ const Details = () => {
             && dog.temperaments
         )
 
+            const apiAndDbTempsSeparated = apiAndDbTemps?.split(",").join(" || ")
+
     return (
         <>
             {dog ?
@@ -33,7 +35,8 @@ const Details = () => {
                         <h3>WEIGHT | {dog.weight}</h3>
                         <h3>HEIGHT | {dog.height}</h3>
                         <h3>LIFE SPAN | {dog.life_span}</h3>
-                        <h3>TEMPERAMENTS | {apiAndDbTemps}</h3>
+                        <h2 className={style.temperamentsTitle}>TEMPERAMENTS</h2>
+                        <h5 className={style.temps}>{apiAndDbTempsSeparated}</h5>
                         <h4>{dog.id}</h4>
                     </div>
                     <div className={style.imgContainer}>

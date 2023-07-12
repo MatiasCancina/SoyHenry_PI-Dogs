@@ -21,7 +21,8 @@ export const Card = ({ dog }) => {  //? recibe dog por props de Cards
             <img onClick={navigateHandler} className={style.image} src={dog.image} alt={dog.name} />
             <div className={style.dogInfo}>
                 <p>Weight: {dog.weight}</p>
-                <p>Temperaments: {apiAndDbTemps}</p>
+                <h4>Temperaments:</h4>
+                <p>{apiAndDbTemps}</p>
             </div>
         </div>
     )
