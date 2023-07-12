@@ -11,7 +11,7 @@ const Pagination = ({ count, totalPages, nextHandler, prevHandler, firstPageHand
                     {"<"}
                 </button>
 
-                <h3>{count} of {totalPages}</h3>
+                <h3>{count} - {totalPages}</h3>
 
                 <button className={style.arrow} onClick={nextHandler}>
                     {">"}
