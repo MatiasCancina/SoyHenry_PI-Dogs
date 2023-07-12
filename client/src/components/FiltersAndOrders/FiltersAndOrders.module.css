@@ -1,0 +1,10 @@
+.filtersAndOrdersContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.resetBtn {
+    width: 100px;
+}
