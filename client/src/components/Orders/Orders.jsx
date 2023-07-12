@@ -11,7 +11,6 @@ const Orders = () => {
     return (
         <div>
             <select onChange={handleOrder}>
-                <option disabled selected value="">ORDER</option>
                 <option value="A-Z">A-Z</option>
                 <option value="Z-A">Z-A</option>
             </select>

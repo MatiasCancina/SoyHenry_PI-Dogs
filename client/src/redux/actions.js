@@ -45,6 +45,7 @@ export const orderByName = (order) => {
 //*FILTERS
 export const filterbyOrigin = (origin) => {
     return {
-
+        type: TYPES.FILTER_BY_ORIGIN,
+        payload: origin
     }
 }
