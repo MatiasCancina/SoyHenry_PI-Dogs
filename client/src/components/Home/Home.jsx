@@ -18,7 +18,10 @@ const Home = () => {
 
     return (
         <div className={style.homeContainer}>
-            <FiltersAndOrders />
+            {dogs.length ?
+                <FiltersAndOrders /> :
+                null
+            }
             <Cards dogs={dogs} />
             <Pagination
                 count={count}
