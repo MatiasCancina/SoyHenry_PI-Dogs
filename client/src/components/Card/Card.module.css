@@ -7,9 +7,7 @@
 }
 
 .cardContainer h1 {
-  font-size: 16px;
-  margin-bottom: 15px;
-  /* margin-top: 10px; */
+  font-size: 17px;
 }
 
 .image {
@@ -19,7 +17,7 @@
   object-fit: cover;
   object-position: center top;
   transition: all 0.4s ease;
-  margin-bottom: 5px;
+  margin: 15px 0 5px;
   cursor: pointer;
 }
 
