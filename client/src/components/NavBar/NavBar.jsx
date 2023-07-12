@@ -4,9 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 const NavBar = () => {
     const location = useLocation();
-
-
-
+    
     return (
         <div className={style.navbarContainer}>
             <NavLink className={style.navLink} to='/home'>Happy Paws</NavLink>
