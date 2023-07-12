@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { orderByName, orderByWeight } from "../../../redux/actions";
+import style from './Orders.module.css';
 
 const Orders = () => {
     const dispatch = useDispatch();

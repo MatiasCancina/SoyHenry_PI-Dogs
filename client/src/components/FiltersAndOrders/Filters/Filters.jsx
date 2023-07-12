@@ -1,6 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterbyOrigin, filterbyTemps } from '../../../redux/actions'
+import style from './Filters.module.css';
+
 
 const Filters = () => {
     const temperaments = useSelector(state => state.temperaments)
