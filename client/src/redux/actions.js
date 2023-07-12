@@ -4,6 +4,7 @@ export const TYPES = {
     GET_ALL_DOGS: 'GET_ALL_DOGS',
     GET_DOG_NAME: 'GET_DOG_NAME',
     ORDER_BY_NAME: 'ORDER_BY_NAME',
+    ORDER_BY_WEIGHT: 'ORDER_BY_WEIGHT',
     FILTER_BY_ORIGIN: 'FILTER_BY_ORIGIN'
 }
 
@@ -33,12 +34,19 @@ export const getDogName = (name) => {
             alert('That dog doesn´t exists')
         }
     }
-} 
+}
 //*ORDERS
 export const orderByName = (order) => {
     return {
         type: TYPES.ORDER_BY_NAME,
         payload: order
+    }
+}
+
+export const orderByWeight = (weight) => {
+    return {
+        type: TYPES.ORDER_BY_WEIGHT,
+        payload: weight,
     }
 }
 

@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import Cards from '../Cards/Cards';
 import { usePagination } from '../../utils/customHooks/usePagination';
 import Pagination from '../Pagination/Pagination';
-import Orders from '../Orders/Orders';
-import Filters from '../Filters/Filters';
+import Orders from '../FiltersAndOrders/Orders/Orders';
+import Filters from '../FiltersAndOrders/Filters/Filters';
 import style from './Home.module.css';
 
 const Home = () => {
@@ -18,8 +18,11 @@ const Home = () => {
 
     return (
         <div className={style.homeContainer}>
-            <Orders/>
-            <Filters/>
+            <div className={style.filtersAndOrders}>
+                <Orders />
+                <Filters />
+            </div>
+
             <Cards dogs={dogs} />
             <Pagination
                 count={count}

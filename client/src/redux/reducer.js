@@ -37,7 +37,43 @@ const rootReducer = (state = initialState, action) => {
                 dogs: sortedDogs
             }
 
-        case()
+        case (TYPES.ORDER_BY_WEIGHT): {
+            const dogsCopy = [...state.dogs];
+
+            const dogsWeight = dogsCopy.map(dog => {
+                let minWeight = null;
+                let maxWeight = null;
+        
+                if (dog.weight) {
+                    const weightArray = dog.weight.split(' - ');
+                    if (weightArray.length === 1) {
+                        minWeight = maxWeight = parseInt(weightArray[0]);
+                    } else if (weightArray.length === 2) {
+                        minWeight = parseInt(weightArray[0]);
+                        maxWeight = parseInt(weightArray[1]);
+                    }
+                }
+        
+                return {
+                    ...dog,
+                    minWeight,
+                    maxWeight
+                };
+            }).sort((a, b) => {
+                if (isNaN(a.minWeight) || isNaN(b.minWeight)) {
+                    return isNaN(a.minWeight) ? 1 : -1;
+                } else if (action.payload === 'heavier') {
+                    return b.maxWeight - a.maxWeight;
+                } else {
+                    return a.minWeight - b.minWeight;
+                }
+            });
+        
+            return {
+                ...state,
+                dogs: dogsWeight
+            };
+        }
 
         //*FILTERS
         case (TYPES.FILTER_BY_ORIGIN):
