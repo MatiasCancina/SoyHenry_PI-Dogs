@@ -28,13 +28,27 @@
     text-decoration-thickness: 5px;
 }
 
+.temperamentsTitle {
+    /* margin-bottom: 4px; */
+    font-size: 1.4rem;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 3px;
+}
+
+.temps {
+    margin: 10px 80px 0 80px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 .info h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: 4%;
 }
 
 .info h4 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin: 4%;
 }
 

@@ -5,3 +5,10 @@
     justify-content: center;
     width: 70%;
 }
+
+.filtersAndOrders{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
