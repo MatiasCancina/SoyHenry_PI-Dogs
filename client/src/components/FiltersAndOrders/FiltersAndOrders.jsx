@@ -15,7 +15,7 @@ const FiltersAndOrders = () => {
     <div className={style.filtersAndOrdersContainer}>
         <Orders/>
         <Filters/>
-        <button className={style.resetBtn} onChange={handleReset}>RESET</button>
+        <button className={style.resetBtn} onClick={handleReset}>RESET</button>
     </div>
   )
 }
