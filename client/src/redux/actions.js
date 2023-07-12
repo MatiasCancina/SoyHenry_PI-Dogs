@@ -2,10 +2,13 @@ import axios from 'axios';
 
 export const TYPES = {
     GET_ALL_DOGS: 'GET_ALL_DOGS',
+    GET_ALL_TEMPS: 'GET_ALL_TEMPS',
     GET_DOG_NAME: 'GET_DOG_NAME',
     ORDER_BY_NAME: 'ORDER_BY_NAME',
     ORDER_BY_WEIGHT: 'ORDER_BY_WEIGHT',
-    FILTER_BY_ORIGIN: 'FILTER_BY_ORIGIN'
+    FILTER_BY_ORIGIN: 'FILTER_BY_ORIGIN',
+    FILTER_BY_TEMPS: 'FILTER_BY_TEMPS',
+    RESET_FILTERS: 'RESET_FILTERS'
 }
 
 export const getAllDogs = () => {
@@ -21,8 +24,21 @@ export const getAllDogs = () => {
     }
 }
 
+export const getAllTemps = () => {
+    const URL = 'http://localhost:8080/temperaments';
+
+    return async (dispatch) => {
+        const { data } = await axios(URL);
+        return dispatch({
+            type: TYPES.GET_ALL_TEMPS,
+            payload: data
+        })
+    }
+}
+
 export const getDogName = (name) => {
     const URL = `http://localhost:8080/dogs?name=${name}`;
+
     return async (dispatch) => {
         try {
             const { data } = await axios(URL);
@@ -35,6 +51,14 @@ export const getDogName = (name) => {
         }
     }
 }
+
+//*RESET FILTERS
+export const resetFilters = () => {
+    return {
+        type: TYPES.RESET_FILTERS
+    }
+}
+
 //*ORDERS
 export const orderByName = (order) => {
     return {
@@ -55,5 +79,12 @@ export const filterbyOrigin = (origin) => {
     return {
         type: TYPES.FILTER_BY_ORIGIN,
         payload: origin
+    }
+}
+
+export const filterbyTemps = (temp) => {
+    return {
+        type: TYPES.FILTER_BY_TEMPS,
+        payload: temp
     }
 }

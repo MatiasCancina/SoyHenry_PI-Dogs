@@ -15,10 +15,23 @@ const rootReducer = (state = initialState, action) => {
                 backupDogs: action.payload
             }
 
+        case (TYPES.GET_ALL_TEMPS):
+            return {
+                ...state,
+                temperaments: action.payload,
+            }
+
         case (TYPES.GET_DOG_NAME):
             return {
                 ...state,
                 dogs: action.payload
+            }
+
+        //*RESET FILTERS
+        case (TYPES.RESET_FILTERS):
+            return {
+                ...state,
+                dogs: state.backupDogs
             }
 
         //*ORDERS
@@ -43,7 +56,7 @@ const rootReducer = (state = initialState, action) => {
             const dogsWeight = dogsCopy.map(dog => {
                 let minWeight = null;
                 let maxWeight = null;
-        
+
                 if (dog.weight) {
                     const weightArray = dog.weight.split(' - ');
                     if (weightArray.length === 1) {
@@ -53,7 +66,7 @@ const rootReducer = (state = initialState, action) => {
                         maxWeight = parseInt(weightArray[1]);
                     }
                 }
-        
+
                 return {
                     ...dog,
                     minWeight,
@@ -68,7 +81,7 @@ const rootReducer = (state = initialState, action) => {
                     return a.minWeight - b.minWeight;
                 }
             });
-        
+
             return {
                 ...state,
                 dogs: dogsWeight
@@ -86,6 +99,20 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 dogs: filterDogs
+            }
+
+        case (TYPES.FILTER_BY_TEMPS):
+            const backupDogsCopy = [...state.backupDogs];
+
+            return {
+                ...state,
+                dogs: action.payload === 'ALL' ?
+                    state.backupDogs :
+                    backupDogsCopy.filter(dog =>
+                        dog.temperaments ?
+                            dog.temperaments.includes(action.payload) :
+                            (dog.temperament && dog.temperament.includes(action.payload))
+                    )
             }
 
         default:
