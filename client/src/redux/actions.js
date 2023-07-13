@@ -4,6 +4,7 @@ export const TYPES = {
     GET_ALL_DOGS: 'GET_ALL_DOGS',
     GET_ALL_TEMPS: 'GET_ALL_TEMPS',
     GET_DOG_NAME: 'GET_DOG_NAME',
+    CREATE_DOG: 'CREATE_DOG',
     ORDER_BY_NAME: 'ORDER_BY_NAME',
     ORDER_BY_WEIGHT: 'ORDER_BY_WEIGHT',
     FILTER_BY_ORIGIN: 'FILTER_BY_ORIGIN',
@@ -49,6 +50,24 @@ export const getDogName = (name) => {
         } catch (error) {
             alert('That dog doesn´t exists')
         }
+    }
+}
+
+//*CREATE 
+export const createDog = (dog) => {
+    const URL = 'http://localhost:8080/dogs'
+
+    return async (dispatch) => {
+        try {
+            await axios.post(URL, dog)
+            
+            return dispatch({
+                type: TYPES.CREATE_DOG
+            })
+        } catch (error) {
+            alert('That dog already exists')
+        }
+
     }
 }
 

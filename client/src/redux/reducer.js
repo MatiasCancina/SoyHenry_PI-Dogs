@@ -27,6 +27,12 @@ const rootReducer = (state = initialState, action) => {
                 dogs: action.payload
             }
 
+        //*CREATE
+        case (TYPES.CREATE_DOG):
+            return {
+                ...state,
+            }
+
         //*RESET FILTERS
         case (TYPES.RESET_FILTERS):
             return {
