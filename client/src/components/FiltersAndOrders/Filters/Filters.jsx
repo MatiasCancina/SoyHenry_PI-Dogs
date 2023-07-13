@@ -1,8 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterbyOrigin, filterbyTemps } from '../../../redux/actions'
-import style from './Filters.module.css';
-
 
 const Filters = () => {
     const temperaments = useSelector(state => state.temperaments)
@@ -19,23 +17,22 @@ const Filters = () => {
 
     return (
         <div>
-            <select onChange={handleFilterByOrigin}>
-                <option disabled selected value="">API | DB</option>
-                <option value="API">API</option>
-                <option value="DB">DB</option>
-            </select>
-
             {
                 temperaments.length ? (
                     <select onChange={handleFilterByTemp}>
-                        <option disabled selected value="">TEMPERAMENTS</option>
-                        <option value="ALL">ALL</option>
+                        <option value="ALL">ALL TEMPERAMENTS</option>
                         {temperaments.map(temp => (
                             <option key={temp.id} value={temp.name}>{temp.name}</option>
                         ))}
                     </select>
                 ) : null
             }
+
+            <select onChange={handleFilterByOrigin}>
+                <option disabled selected value="">API | DB</option>
+                <option value="API">API</option>
+                <option value="DB">DB</option>
+            </select>
         </div>
     )
 }

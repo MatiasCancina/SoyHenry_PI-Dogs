@@ -18,15 +18,17 @@
 
 .firstBtn {
     width: 100px;
+    height: 35px;
 }
 
 .lastBtn {
     width: 100px;
+    height: 35px;
 }
 
 button {
-    width: 50px;
-    height: 40px;
+    width: 40px;
+    height: 30px;
     border: 3px solid #034078;
     border-radius: 45px;
     transition: all 0.3s;
@@ -41,7 +43,7 @@ button {
 .arrow:hover {
     background: #034078;
     color: #fefcfb;
-    font-size: 1.5em;
+    font-size: 1.4em;
 }
 
 button:hover{

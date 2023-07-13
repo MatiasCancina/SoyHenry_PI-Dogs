@@ -13,8 +13,8 @@ const FiltersAndOrders = () => {
     
   return (
     <div className={style.filtersAndOrdersContainer}>
-        <Orders/>
         <Filters/>
+        <Orders/>
         <button className={style.resetBtn} onClick={handleReset}>RESET</button>
     </div>
   )

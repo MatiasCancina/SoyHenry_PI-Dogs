@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    background-color: rgba(197, 70, 255, 0.637);
+    background-color: #358bdb;
     width: 800px;
     border-radius: 10px;
     padding: 10px;
@@ -11,9 +11,9 @@
 }
 
 select  {
-    color: white;
-    border: rgba(174, 0, 255, 0.63);
-    background-color: rgb(197, 70, 255);
+    color: #fefcfb;
+    border: #2979c4;
+    background-color: #034078;
     justify-content: center;
     margin: 0px 5px;
     padding: 5px;
@@ -21,6 +21,11 @@ select  {
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
+}
+
+option {
+    color: whitesmoke;
+    font-weight: bold;
 }
 
 .resetBtn {
