@@ -27,6 +27,7 @@ const useCreateValidation = () => {
         weightMax: '',
         life_spanMin: '',
         life_spanMax: '',
+        temperaments: 'Selected temperaments:',
         image: '',
     })
 
@@ -192,7 +193,23 @@ const useCreateValidation = () => {
                 })
             }
         }
+
+        //*TEMPERAMENTS VALIDATION
+        // if (e.target.name === 'image') {
+        //     if (!e.target.value) {
+        //         setErrors({
+        //             ...errors,
+        //             temperaments:'select temperaments'
+        //         })
+        //     } else {
+        //         setErrors({
+        //             ...errors,
+        //             temperaments: ''
+        //         })
+        //     }
+        // }
     }
+
 
     //! HANDLERS
     const handleInputChange = (e) => {

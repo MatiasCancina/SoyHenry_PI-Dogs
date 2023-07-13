@@ -19,7 +19,7 @@ const SelectedTemps = ({ newDog }) => {
         <div>
             {selectedTempsFound.length > 0 ? (
                 <div>
-                    <p>Selected Temperaments:</p>
+                    {/* <p>Selected Temperaments:</p> */}
                     {selectedTempsFound.map(temperament => (
                         <p key={temperament.id}>{temperament.name}</p>
                     ))}
