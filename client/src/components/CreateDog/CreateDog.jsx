@@ -8,7 +8,7 @@ const CreateDog = () => {
     const dispatch = useDispatch()
     const temperaments = useSelector(state => state.temperaments)
 
-    const { newDog, handleInputChange, handleInputChangeTemps, handleSubmit } = useCreateValidation()
+    const { newDog, errors, handleInputChange, handleInputChangeTemps, handleSubmit } = useCreateValidation()
 
     useEffect(() => {
         dispatch(getAllTemps())
@@ -18,47 +18,93 @@ const CreateDog = () => {
         <form onSubmit={handleSubmit}>
             <label >
                 Name:
-                <input
-                    type="text"
-                    name="name"
-                    value={newDog.name}
-                    onChange={handleInputChange}
-                />
             </label>
+            <input
+                type="text"
+                name="name"
+                value={newDog.name}
+                onChange={handleInputChange}
+            />
+            <p>{errors.name}</p>
+
             <label>
-                Height:
-                <input
-                    type="text"
-                    name='height'
-                    value={newDog.height}
-                    onChange={handleInputChange} />
+                Weight Min:
             </label>
+            <input
+                type="text"
+                name='weightMin'
+                value={newDog.weightMin}
+                onChange={handleInputChange}
+            />
+            <p>{errors.weightMin}</p>
+
             <label>
-                Weight:
-                <input
-                    type="text"
-                    name='weight'
-                    value={newDog.weight}
-                    onChange={handleInputChange} />
+                Weight Max:
             </label>
+            <input
+                type="text"
+                name='weightMax'
+                value={newDog.weightMax}
+                onChange={handleInputChange}
+            />
+            <p>{errors.weightMax}</p>
+
             <label>
-                Life Span:
-                <input
-                    type="text"
-                    name='life_span'
-                    value={newDog.life_span}
-                    onChange={handleInputChange} />
+                Height Min:
             </label>
+            <input
+                type="text"
+                name='heightMin'
+                value={newDog.heightMin}
+                onChange={handleInputChange}
+            />
+            <p>{errors.heightMin}</p>
+
+            <label>
+                Height Max:
+            </label>
+            <input
+                type="text"
+                name='heightMax'
+                value={newDog.heightMax}
+                onChange={handleInputChange}
+            />
+            <p>{errors.heightMax}</p>
+
+            <label>
+                Life Span Min:
+            </label>
+            <input
+                type="text"
+                name='life_spanMin'
+                value={newDog.life_spanMin}
+                onChange={handleInputChange}
+            />
+            <p>{errors.life_spanMin}</p>
+
+            <label>
+                Life Span Max:
+            </label>
+            <input
+                type="text"
+                name='life_spanMax'
+                value={newDog.life_spanMax}
+                onChange={handleInputChange}
+            />
+            <p>{errors.life_spanMax}</p>
+
             <label>
                 Image:
-                <input
-                    type="text"
-                    name='image'
-                    value={newDog.image}
-                    onChange={handleInputChange} />
             </label>
-            <div>
+            <input
+                type="text"
+                name='image'
+                value={newDog.image}
+                onChange={handleInputChange}
+            />
+            <p>{errors.image}</p>
 
+            <div>
                 <label>
                     Temperaments:
                 </label>
@@ -71,11 +117,19 @@ const CreateDog = () => {
                             ))}
 
                         </select>
+
                     ) : null
                 }
-                    </div>
-            <button type='submit'>CREAT</button>
-            <SelectedTemps newDog={newDog}/>
+                <p>{errors.temperaments}</p>
+            </div>
+            <SelectedTemps newDog={newDog} />
+            {Object.keys(errors).some(key => errors[key] !== '') ? null :
+                <button
+                    // disabled=
+                    type='submit'>
+                    CREAT
+                </button>
+            }
         </form>
     )
 }
