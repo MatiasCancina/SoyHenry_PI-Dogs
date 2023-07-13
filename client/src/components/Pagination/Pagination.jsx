@@ -1,34 +1,28 @@
 import React from 'react'
 import style from './Pagination.module.css';
 
-const Pagination = ({ dogs, count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler }) => {    //traigo todo lo que voy a usar del hook de Pagination 
+const Pagination = ({ count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler }) => {    //traigo todo lo que voy a usar del hook de Pagination 
 
     return (
         <div className={style.paginationContainer}>
-            {dogs ? (
-                <>
-                    <div className={style.arrowsContainer}>
-                        <button className={style.arrow} onClick={prevHandler}>
-                            {"<"}
-                        </button>
+            <div className={style.arrowsContainer}>
+                <button className={style.arrow} onClick={prevHandler}>
+                    {"<"}
+                </button>
 
-                        <h3>{count} - {totalPages}</h3>
+                <h3>{count} - {totalPages}</h3>
 
-                        <button className={style.arrow} onClick={nextHandler}>
-                            {">"}
-                        </button>
+                <button className={style.arrow} onClick={nextHandler}>
+                    {">"}
+                </button>
+            </div>
 
-                    </div>
-
-                    <button onClick={firstPageHandler} className={style.firstBtn}>
-                        {"FIRST"}
-                    </button>
-                    <button onClick={lastPageHandler} className={style.lastBtn}>
-                        {"LAST"}
-                    </button>
-                </>
-            )
-                : null}
+            <button onClick={firstPageHandler} className={style.firstBtn}>
+                {"FIRST"}
+            </button>
+            <button onClick={lastPageHandler} className={style.lastBtn}>
+                {"LAST"}
+            </button>
         </div>
     )
 }

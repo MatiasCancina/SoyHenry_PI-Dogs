@@ -23,14 +23,17 @@ const Home = () => {
                 null
             }
             <Cards dogs={dogs} />
-            <Pagination
-                count={count}
-                totalPages={totalPages}
-                nextHandler={nextHandler}
-                prevHandler={prevHandler}
-                firstPageHandler={firstPageHandler}
-                lastPageHandler={lastPageHandler}
-            />
+            
+            {dogs.length ?
+                <Pagination
+                    count={count}
+                    totalPages={totalPages}
+                    nextHandler={nextHandler}
+                    prevHandler={prevHandler}
+                    firstPageHandler={firstPageHandler}
+                    lastPageHandler={lastPageHandler}
+                /> : null
+            }
         </div>
     )
 }
