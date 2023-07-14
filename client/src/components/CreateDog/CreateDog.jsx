@@ -14,6 +14,9 @@ const CreateDog = () => {
         dispatch(getAllTemps())
     }, [])
 
+    const hasErrors = Object.values(errors).some((value) => value !== '');
+    const noTemperamentsSelected = newDog.temperaments.length === 0 || newDog.temperaments.length > 12;
+
     return (
         <form onSubmit={handleSubmit}>
             <label >
@@ -113,23 +116,25 @@ const CreateDog = () => {
                         <select defaultValue='ALL' onChange={handleInputChangeTemps}>
                             <option disabled value="ALL">Select Temperaments</option>
                             {temperaments.map(temp => (
-                                <option key={temp.id} value={temp.id}>{temp.name}</option>
+                                <option key={temp.id} value={temp.id} name='hola'>{temp.name}</option>
                             ))}
 
                         </select>
 
                     ) : null
                 }
-                <p>{errors.temperaments}</p>
+                <p>{errors.temperaments.length > 0 ? errors.temperaments : ''}</p>
+
             </div>
             <SelectedTemps newDog={newDog} />
-            {Object.keys(errors).some(key => errors[key] !== '') ? null :
+
+            {!hasErrors && !noTemperamentsSelected && (
                 <button
-                    // disabled=
-                    type='submit'>
-                    CREAT
+                    type='submit'
+                >
+                    CREATE
                 </button>
-            }
+            )}
         </form>
     )
 }

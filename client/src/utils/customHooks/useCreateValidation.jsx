@@ -27,7 +27,7 @@ const useCreateValidation = () => {
         weightMax: '',
         life_spanMin: '',
         life_spanMax: '',
-        temperaments: 'Selected temperaments:',
+        temperaments: '',
         image: '',
     })
 
@@ -57,12 +57,17 @@ const useCreateValidation = () => {
 
         //*WEIGHT VALIDATION
         if (e.target.name === 'weightMin') {
-            if (Number(e.target.value) === 0) {
+            if (!/^\d+$/.test(e.target.value)) {
+                setErrors({
+                    ...errors,
+                    weightMin: 'Must be a number'
+                })
+            } else if (Number(e.target.value) === 0) {
                 setErrors({
                     ...errors,
                     weightMin: 'Cannot be 0'
                 })
-            } else if (Number(e.target.value) >= Number(newDog.weightMin)) {
+            } else if (Number(e.target.value) >= Number(newDog.weightMax)) {
                 setErrors({
                     ...errors,
                     weightMin: 'Must be lower than the maximum'
@@ -71,16 +76,21 @@ const useCreateValidation = () => {
                 setErrors({
                     ...errors,
                     weightMin: '',
-                    weightMax: '',
+                    weightMax: ''
                 })
             }
         }
 
         if (e.target.name === 'weightMax') {
-            if (Number(e.target.value) >= 98) {
+            if (!/^\d+$/.test(e.target.value)) {
                 setErrors({
                     ...errors,
-                    weightMax: 'Must be lower than 98   '
+                    weightMax: 'Must be a number'
+                })
+            } else if (Number(e.target.value) >= 98) {
+                setErrors({
+                    ...errors,
+                    weightMax: 'Must be lower than 98'
                 })
             } else if (Number(e.target.value) <= Number(newDog.weightMin)) {
                 setErrors({
@@ -98,7 +108,12 @@ const useCreateValidation = () => {
 
         //*HEIGHT VALIDATION
         if (e.target.name === 'heightMin') {
-            if (Number(e.target.value) <= 8) {
+            if (!/^\d+$/.test(e.target.value)) {
+                setErrors({
+                    ...errors,
+                    heightMin: 'Must be a number'
+                })
+            } else if (Number(e.target.value) <= 8) {
                 setErrors({
                     ...errors,
                     heightMin: 'Must be higher than 8'
@@ -118,7 +133,12 @@ const useCreateValidation = () => {
         }
 
         if (e.target.name === 'heightMax') {
-            if (Number(e.target.value) >= 147) {
+            if (!/^\d+$/.test(e.target.value)) {
+                setErrors({
+                    ...errors,
+                    heightMax: 'Must be a number'
+                })
+            } else if (Number(e.target.value) >= 147) {
                 setErrors({
                     ...errors,
                     heightMax: 'Must be lower than 147'
@@ -132,14 +152,19 @@ const useCreateValidation = () => {
                 setErrors({
                     ...errors,
                     heightMax: '',
-                    heightMin: '',
+                    heightMin: ''
                 })
             }
         }
 
         //*LIFE_SPAN VALIDATION
         if (e.target.name === 'life_spanMin') {
-            if (Number(e.target.value) === 0) {
+            if (!/^\d+$/.test(e.target.value)) {
+                setErrors({
+                    ...errors,
+                    life_spanMin: 'Must be a number'
+                })
+            } else if (Number(e.target.value) === 0) {
                 setErrors({
                     ...errors,
                     life_spanMin: 'Cannot be 0'
@@ -159,7 +184,12 @@ const useCreateValidation = () => {
         }
 
         if (e.target.name === 'life_spanMax') {
-            if (Number(e.target.value) >= 24) {
+            if (!/^\d+$/.test(e.target.value)) {
+                setErrors({
+                    ...errors,
+                    life_spanMax: 'Must be a number'
+                })
+            } else if (Number(e.target.value) >= 24) {
                 setErrors({
                     ...errors,
                     life_spanMax: 'Must be lower than 24'
@@ -173,7 +203,7 @@ const useCreateValidation = () => {
                 setErrors({
                     ...errors,
                     life_spanMax: '',
-                    life_spanMin: '',
+                    life_spanMin: ''
                 })
             }
         }
@@ -195,19 +225,22 @@ const useCreateValidation = () => {
         }
 
         //*TEMPERAMENTS VALIDATION
-        // if (e.target.name === 'image') {
-        //     if (!e.target.value) {
-        //         setErrors({
-        //             ...errors,
-        //             temperaments:'select temperaments'
-        //         })
-        //     } else {
-        //         setErrors({
-        //             ...errors,
-        //             temperaments: ''
-        //         })
-        //     }
-        // }
+        if (e.target.name === 'hola') {
+            console.log('entre');
+            const selectedTemperaments = [...newDog.temperaments, Number(e.target.value)];
+
+            if (selectedTemperaments.length >= 1 && selectedTemperaments.length <= 12) {
+                setErrors({
+                  ...errors,
+                  temperaments: '',
+                });
+              } else {
+                setErrors({
+                  ...errors,
+                  temperaments: 'Select between 1 and 12 temperaments',
+                });
+              }
+        }
     }
 
 
@@ -221,11 +254,20 @@ const useCreateValidation = () => {
     }
 
     const handleInputChangeTemps = (e) => {
-        setNewDog({
-            ...newDog,
-            temperaments: [...newDog.temperaments, Number(e.target.value)]
-        })
-        validation(e)
+        const selectedTemperament = Number(e.target.value);
+
+        if (newDog.temperaments.includes(selectedTemperament)) {
+            setNewDog({
+                ...newDog,
+                temperaments: newDog.temperaments.filter(temp => temp !== selectedTemperament)
+            })
+        } else {
+            setNewDog({
+                ...newDog,
+                temperaments: [...newDog.temperaments, selectedTemperament]
+            })
+        }
+        validation(e);
     }
 
     const transformDog = () => {
@@ -240,14 +282,14 @@ const useCreateValidation = () => {
     }
 
     const handleSubmit = (e) => {
-        const createdDog = transformDog()
+        e.preventDefault();
 
-        e.preventDefault()
-        dispatch(createDog(createdDog))
-        setNewDog(initialState)
-        alert('The dog has been created')
+        const createdDog = transformDog();
+        dispatch(createDog(createdDog));
+        setNewDog(initialState);
+        alert('The dog has been created');
     }
-
     return { newDog, errors, handleInputChange, handleInputChangeTemps, handleSubmit }
 }
+
 export default useCreateValidation
