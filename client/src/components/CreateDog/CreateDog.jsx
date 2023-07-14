@@ -3,6 +3,7 @@ import useCreateValidation from '../../utils/customHooks/useCreateValidation'
 import { useEffect } from 'react'
 import { getAllTemps } from '../../redux/actions'
 import SelectedTemps from './SelectedTemps'
+import style from './CreateDog.module.css';
 
 const CreateDog = () => {
     const dispatch = useDispatch()
@@ -12,130 +13,140 @@ const CreateDog = () => {
 
     useEffect(() => {
         dispatch(getAllTemps())
-    }, [])
+    }, [dispatch])
 
     const hasErrors = Object.values(errors).some((value) => value !== '');
     const noTemperamentsSelected = newDog.temperaments.length === 0 || newDog.temperaments.length > 12;
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label >
-                Name:
-            </label>
-            <input
-                type="text"
-                name="name"
-                value={newDog.name}
-                onChange={handleInputChange}
-            />
-            <p>{errors.name}</p>
-
-            <label>
-                Weight Min:
-            </label>
-            <input
-                type="text"
-                name='weightMin'
-                value={newDog.weightMin}
-                onChange={handleInputChange}
-            />
-            <p>{errors.weightMin}</p>
-
-            <label>
-                Weight Max:
-            </label>
-            <input
-                type="text"
-                name='weightMax'
-                value={newDog.weightMax}
-                onChange={handleInputChange}
-            />
-            <p>{errors.weightMax}</p>
-
-            <label>
-                Height Min:
-            </label>
-            <input
-                type="text"
-                name='heightMin'
-                value={newDog.heightMin}
-                onChange={handleInputChange}
-            />
-            <p>{errors.heightMin}</p>
-
-            <label>
-                Height Max:
-            </label>
-            <input
-                type="text"
-                name='heightMax'
-                value={newDog.heightMax}
-                onChange={handleInputChange}
-            />
-            <p>{errors.heightMax}</p>
-
-            <label>
-                Life Span Min:
-            </label>
-            <input
-                type="text"
-                name='life_spanMin'
-                value={newDog.life_spanMin}
-                onChange={handleInputChange}
-            />
-            <p>{errors.life_spanMin}</p>
-
-            <label>
-                Life Span Max:
-            </label>
-            <input
-                type="text"
-                name='life_spanMax'
-                value={newDog.life_spanMax}
-                onChange={handleInputChange}
-            />
-            <p>{errors.life_spanMax}</p>
-
-            <label>
-                Image:
-            </label>
-            <input
-                type="text"
-                name='image'
-                value={newDog.image}
-                onChange={handleInputChange}
-            />
-            <p>{errors.image}</p>
-
-            <div>
-                <label>
-                    Temperaments:
+        <div className={style.container}>
+            <form onSubmit={handleSubmit} className={style.formContainer}>
+                <h1 className={style.titl}>CREATE YOUR DOG</h1>
+                <label className={style.titles}>
+                    Name:
                 </label>
-                {
-                    temperaments.length ? (
-                        <select defaultValue='ALL' onChange={handleInputChangeTemps}>
-                            <option disabled value="ALL">Select Temperaments</option>
-                            {temperaments.map(temp => (
-                                <option key={temp.id} value={temp.id} name='hola'>{temp.name}</option>
-                            ))}
+                <input
+                    type="text"
+                    name="name"
+                    value={newDog.name}
+                    onChange={handleInputChange}
+                    className={style.inputContainers}
+                />
+                <p className={style.errors}>{errors.name}</p>
 
-                        </select>
+                <label className={style.titles}>
+                    Weight Min:
+                </label>
+                <input
+                    type="text"
+                    name='weightMin'
+                    value={newDog.weightMin}
+                    onChange={handleInputChange}
+                    className={style.inputContainers}
+                />
+                <p className={style.errors}>{errors.weightMin}</p>
 
-                    ) : null
-                }
-                <p>{errors.temperaments.length > 0 ? errors.temperaments : ''}</p>
+                <label className={style.titles}>
+                    Weight Max:
+                </label>
+                <input
+                    type="text"
+                    name='weightMax'
+                    value={newDog.weightMax}
+                    onChange={handleInputChange}
+                    className={style.inputContainers}
+                />
+                <p className={style.errors}>{errors.weightMax}</p>
 
-            </div>
-            <SelectedTemps newDog={newDog} />
+                <label className={style.titles}>
+                    Height Min:
+                </label>
+                <input
+                    type="text"
+                    name='heightMin'
+                    value={newDog.heightMin}
+                    onChange={handleInputChange}
+                    className={style.inputContainers}
+                />
+                <p className={style.errors}>{errors.heightMin}</p>
 
-            {!hasErrors && !noTemperamentsSelected && (
-                <button
-                    type='submit'
-                >
-                    CREATE
-                </button>
-            )}
-        </form>
+                <label className={style.titles}>
+                    Height Max:
+                </label>
+                <input
+                    type="text"
+                    name='heightMax'
+                    value={newDog.heightMax}
+                    onChange={handleInputChange}
+                    className={style.inputContainers}
+                />
+                <p className={style.errors}>{errors.heightMax}</p>
+
+                <label className={style.titles}>
+                    Life Span Min:
+                </label>
+                <input
+                    type="text"
+                    name='life_spanMin'
+                    value={newDog.life_spanMin}
+                    onChange={handleInputChange}
+                    className={style.inputContainers}
+                />
+                <p className={style.errors}>{errors.life_spanMin}</p>
+
+                <label className={style.titles}>
+                    Life Span Max:
+                </label>
+                <input
+                    type="text"
+                    name='life_spanMax'
+                    value={newDog.life_spanMax}
+                    onChange={handleInputChange}
+                    className={style.inputContainers}
+                />
+                <p className={style.errors}>{errors.life_spanMax}</p>
+
+                <label className={style.titles}>
+                    Image:
+                </label>
+                <input
+                    type="text"
+                    name='image'
+                    value={newDog.image}
+                    onChange={handleInputChange}
+                    className={style.inputContainers}
+                />
+                <p className={style.errors}>{errors.image}</p>
+
+                <div>
+                    <label className={style.titles}>
+                        Temperaments:
+                    </label>
+                    {
+                        temperaments.length ? (
+                            <select defaultValue='ALL' onChange={handleInputChangeTemps}>
+                                <option disabled value="ALL">Select Temperaments</option>
+                                {temperaments.map(temp => (
+                                    <option key={temp.id} value={temp.id} name='hola'>{temp.name}</option>
+                                ))}
+
+                            </select>
+
+                        ) : null
+                    }
+                    <p className={style.errors}>{errors.temperaments.length > 0 ? errors.temperaments : ''}</p>
+
+                </div>
+                <SelectedTemps newDog={newDog} />
+                {!hasErrors && !noTemperamentsSelected && (
+                    <button
+                        type='submit'
+                    >
+                        CREATE
+                    </button>
+                )}
+            </form>
+        </div>
     )
 }
 
