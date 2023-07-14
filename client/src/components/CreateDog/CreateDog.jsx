@@ -138,13 +138,16 @@ const CreateDog = () => {
 
                 </div>
                 <SelectedTemps newDog={newDog} />
-                {!hasErrors && !noTemperamentsSelected && (
-                    <button
-                        type='submit'
-                    >
-                        CREATE
-                    </button>
-                )}
+                <div className={style.submitContainer}>
+                    {/* {!hasErrors && !noTemperamentsSelected && ( */}
+                        <button
+                            type='submit'
+                            className={style.submitBtn}
+                        >
+                            CREATE
+                        </button>
+                    {/* )} */}
+                </div>
             </form>
         </div>
     )

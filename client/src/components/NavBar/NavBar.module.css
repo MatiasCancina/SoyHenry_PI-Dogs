@@ -17,3 +17,13 @@
     text-decoration: none;
     color: #fefcfb;
   }
+  .creatorDogBtn{
+    width: 150px;
+    height: 40px;
+  }
+
+  .creatorDogBtn:hover{
+    background: #fefcfb;
+    border: 3px solid #034078;
+    color: #000000;
+  }
