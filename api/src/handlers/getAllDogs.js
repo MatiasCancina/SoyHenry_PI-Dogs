@@ -5,7 +5,7 @@ const getAllDogs = async () => {    //se guardan los perros tanto de la api como
     const apiDogs = await getApiDogs();
     const dbDogs = await getDbDogs();
 
-    return [...apiDogs, ...dbDogs]
+    return [...dbDogs, ...apiDogs]
 }
 
 module.exports = {
