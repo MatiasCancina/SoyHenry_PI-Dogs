@@ -33,6 +33,21 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
             }
 
+        //*DELETE
+        case (TYPES.DELETE_DOG):
+
+            let filterDbDogs = [...state.dogs].filter(
+                (dog) => dog.id.toString() !== action.payload
+            )
+            let filterDeletedBackup = [...state.backupDogs].filter(
+                (dog) => dog.id.toString() !== action.payload
+            )
+            return {
+                ...state,
+                dogs: filterDbDogs,
+                backupDogs: filterDeletedBackup
+            }
+
         //*RESET FILTERS
         case (TYPES.RESET_FILTERS):
             return {

@@ -5,6 +5,7 @@ export const TYPES = {
     GET_ALL_TEMPS: 'GET_ALL_TEMPS',
     GET_DOG_NAME: 'GET_DOG_NAME',
     CREATE_DOG: 'CREATE_DOG',
+    DELETE_DOG: 'DELETE_DOG',
     ORDER_BY_NAME: 'ORDER_BY_NAME',
     ORDER_BY_WEIGHT: 'ORDER_BY_WEIGHT',
     FILTER_BY_ORIGIN: 'FILTER_BY_ORIGIN',
@@ -60,14 +61,22 @@ export const createDog = (dog) => {
     return async (dispatch) => {
         try {
             await axios.post(URL, dog)
-            
+
             return dispatch({
                 type: TYPES.CREATE_DOG
             })
         } catch (error) {
             alert('That dog already exists')
         }
+    }
+}
 
+//*DELETE
+//?TRAE LA INFO
+export const deleteDbDogsAction = (id) => {
+    return {
+        type: TYPES.DELETE_DOG,
+        payload: id
     }
 }
 
