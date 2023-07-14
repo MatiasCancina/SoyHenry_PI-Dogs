@@ -20,7 +20,7 @@ const Filters = () => {
             {
                 temperaments.length ? (
                     <select onChange={handleFilterByTemp}>
-                        <option value="ALL">ALL TEMPERAMENTS</option>
+                        <option value="original">ALL TEMPERAMENTS</option>
                         {temperaments.map(temp => (
                             <option key={temp.id} value={temp.name}>{temp.name}</option>
                         ))}
@@ -29,7 +29,7 @@ const Filters = () => {
             }
 
             <select onChange={handleFilterByOrigin}>
-                <option disabled selected value="">API | DB</option>
+                <option value="original">API | DB</option>
                 <option value="API">API</option>
                 <option value="DB">DB</option>
             </select>
