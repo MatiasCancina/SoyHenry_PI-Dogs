@@ -72,7 +72,6 @@ export const createDog = (dog) => {
 }
 
 //*DELETE
-//?TRAE LA INFO
 export const deleteDbDogsAction = (id) => {
     return {
         type: TYPES.DELETE_DOG,
