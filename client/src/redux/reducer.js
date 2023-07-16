@@ -35,7 +35,7 @@ const rootReducer = (state = initialState, action) => {
 
         //*DELETE
         case (TYPES.DELETE_DOG):
-
+//? filtra la lista de peerros actual y la del backup para crear una nueva sin el pero eliminado
             let filterDbDogs = [...state.dogs].filter(
                 (dog) => dog.id.toString() !== action.payload
             )
@@ -97,9 +97,9 @@ const rootReducer = (state = initialState, action) => {
                 if (isNaN(a.minWeight) || isNaN(b.minWeight)) {
                     return isNaN(a.minWeight) ? 1 : -1;
                 } else if (action.payload === 'heavier') {
-                    return b.maxWeight - a.maxWeight;
+                    return b.maxWeight - a.maxWeight;   //ordena de forma ascendente teniendo en cuenta el segundo valor de weight
                 } else {
-                    return a.minWeight - b.minWeight;
+                    return a.minWeight - b.minWeight;   //0rdena descendentemente teniendo en cuenta el primer valor de weight
                 }
             });
 
