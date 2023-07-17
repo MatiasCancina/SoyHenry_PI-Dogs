@@ -105,7 +105,7 @@ const rootReducer = (state = initialState, action) => {
                 } else if (action.payload === 'heavier') {
                     return b.maxWeight - a.maxWeight;   //ordena de forma ascendente teniendo en cuenta el segundo valor de weight
                 } else {
-                    return a.minWeight - b.minWeight;   //0rdena descendentemente teniendo en cuenta el primer valor de weight
+                    return a.minWeight - b.minWeight;   //Ordena descendentemente teniendo en cuenta el primer valor de weight
                 }
             });
 
