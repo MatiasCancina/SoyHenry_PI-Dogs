@@ -8,11 +8,11 @@ import { store } from './redux/store'
 
 const root = createRoot(document.getElementById('root'));
 root.render(
+  <BrowserRouter>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </Provider>
+  </BrowserRouter>
 )
 
 // If you want to start measuring performance in your app, pass a function
