@@ -297,7 +297,7 @@ const useCreateValidation = () => {
     errors,
     handleInputChange,
     handleInputChangeTemps,
-    handleSubmit,
+    handleSubmit
   };
 };
 
