@@ -14,9 +14,6 @@ const useFiltersState = () => {
     setValue(initialState);
   };
 
-  console.log(value.name);
-  console.log(value.weight);
-
   return { value, setValue, resetFilter }
 }
 
