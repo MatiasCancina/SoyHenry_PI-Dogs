@@ -13,7 +13,7 @@ const NavBar = () => {
     return (
         <div className={style.navbarContainer}>
             <NavLink className={style.navLink} to='/home'>Happy Paws</NavLink>
-            <button onClick={navigateHandler} className={style.creatorDogBtn}>Dog Creator</button>
+            {location.pathname !== '/create' && <button onClick={navigateHandler} className={style.creatorDogBtn}>Dog Creator</button>}
             {location.pathname === '/home' && <SearchBar />}
         </div>
     )
