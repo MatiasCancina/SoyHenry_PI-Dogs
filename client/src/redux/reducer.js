@@ -33,9 +33,15 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
             }
 
+        //*UPDATE
+        case (TYPES.UPDATE_DOG_NAME):
+            return {
+                ...state
+            }
+
         //*DELETE
         case (TYPES.DELETE_DOG):
-        //? filtra la lista de perros actual y la del backup para crear una nueva sin el pero eliminado
+            //? filtra la lista de perros actual y la del backup para crear una nueva sin el pero eliminado
             let filterDbDogs = [...state.dogs].filter(
                 (dog) => dog.id.toString() !== action.payload
             )
@@ -127,7 +133,7 @@ const rootReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                dogs: action.payload === 'ALL' ?    
+                dogs: action.payload === 'ALL' ?
                     state.backupDogs :
                     backupDogsCopy.filter(dog => //se fija en la propiedad temperamentos de la DB y de la API para hacer el filter y mostrarlos
                         dog.temperaments ?

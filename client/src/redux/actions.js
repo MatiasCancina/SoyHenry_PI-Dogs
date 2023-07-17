@@ -5,6 +5,7 @@ export const TYPES = {
     GET_ALL_TEMPS: 'GET_ALL_TEMPS',
     GET_DOG_NAME: 'GET_DOG_NAME',
     CREATE_DOG: 'CREATE_DOG',
+    UPDATE_DOG_NAME: 'UPDATE_DOG_NAME',
     DELETE_DOG: 'DELETE_DOG',
     ORDER_BY_NAME: 'ORDER_BY_NAME',
     ORDER_BY_WEIGHT: 'ORDER_BY_WEIGHT',
@@ -67,6 +68,25 @@ export const createDog = (dog) => {
             })
         } catch (error) {
             alert('That dog already exists')
+        }
+    }
+}
+
+//*UPDATE 
+export const updateDogName = (id, newName) => {
+    const URL = `http://localhost:8080/dogs/${id}`
+
+    return async (dispatch) => {
+        try {
+            const updatedName = { name: newName };
+
+            await axios.put(URL, updatedName)
+
+            return dispatch({
+                type: TYPES.UPDATE_DOG_NAME
+            })
+        } catch (error) {
+            alert(`Error updateing dog´s name: ${error}`)
         }
     }
 }
