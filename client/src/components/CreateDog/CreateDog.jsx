@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getAllTemps } from "../../redux/actions";
 import SelectedTemps from "./SelectedTemps";
 import style from "./CreateDog.module.css";
+import Loader from "../Loader/Loader";
 
 const CreateDog = () => {
   const dispatch = useDispatch();
@@ -136,7 +137,7 @@ const CreateDog = () => {
               ))}
 
             </select>
-          ) : null}
+          ) : <Loader/>}
         </div>
         <SelectedTemps newDog={newDog} />
         
