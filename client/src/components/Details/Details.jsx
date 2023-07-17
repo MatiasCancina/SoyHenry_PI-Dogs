@@ -43,7 +43,7 @@ const Details = () => {
       // Realizamos una nueva llamada a la API para obtener el objeto actualizado
       await urlCall();
     } catch (error) {
-      alert("Error updating name:", error);
+      alert(error.response.data.error);
     }
   };
 

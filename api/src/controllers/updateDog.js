@@ -1,27 +1,53 @@
-const { Dog } = require("../db")
+const { Dog } = require("../db");
+const { getApiDogs } = require("../handlers/getApiDogs");
 
 const updateDog = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const updatedDog = await Dog.update({ ...req.body }, {  //? guarda una copia de todo el perro para poder modifficar cualquiera de sus propiedades 
+        const { name } = req.body;
+
+        if (!name) {
+            return res.status(400).json({ error: "Name is required" });
+        }
+
+        if (name.length < 3 || name.length > 30) {
+            return res.status(400).json({ error: "Name must be between 3 and 30 characters" });
+        }
+
+        // Verificar si ya existe un perro con el mismo nombre en la base de datos
+        const existingDog = await Dog.findOne({ where: { name } });
+
+        if (existingDog && existingDog.id !== id) {
+            return res.status(400).json({ error: "A dog with this name already exists in the DB" });
+        }
+
+        // Obtener la lista de perros de la API
+        const apiDogs = await getApiDogs();
+        const apiDogNames = apiDogs.map((dog) => dog.name);
+
+        // Verificar si el nombre ya existe en la lista de perros de la API
+        if (apiDogNames.includes(name)) {
+            return res.status(400).json({ error: "A dog with this name already exists in the API" });
+        }
+
+        // Actualizar el perro en la base de datos
+        const updatedDog = await Dog.update({ name }, {
             returning: true,
             where: {
                 id: id
             }
-        })
+        });
 
-        if (!updatedDog) return res.send('This dog does not exist')
+        if (!updatedDog) return res.status(404).json({ error: "This dog does not exist" });
 
-        return updatedDog.id !== 'number'   //? si el es uuid (es de la DB) devuelve el perro actualiado, sino tira error 
-            ? res.status(202).json(updatedDog[1][0] )
-            : res.status(401).send('You can´t update this dog')
+        return res.status(202).json(updatedDog[1][0]); // Enviar el perro actualizado
 
     } catch (error) {
-        return res.status(500).json({ error: error.message })
+        return res.status(500).json({ error: error.message });
     }
-}
+};
 
 module.exports = {
     updateDog
-}
+};

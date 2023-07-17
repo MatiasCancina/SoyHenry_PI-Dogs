@@ -86,7 +86,7 @@ export const updateDogName = (id, newName) => {
                 type: TYPES.UPDATE_DOG_NAME
             })
         } catch (error) {
-            alert(`Error updateing dog´s name: ${error}`)
+            alert(error.response.data.error)
         }
     }
 }
