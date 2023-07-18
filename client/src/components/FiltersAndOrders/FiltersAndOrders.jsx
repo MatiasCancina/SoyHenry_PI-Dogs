@@ -3,14 +3,11 @@ import Filters from './Filters/Filters'
 import { useDispatch } from 'react-redux'
 import { resetFilters } from '../../redux/actions'
 import style from './FiltersAndOrders.module.css';
-import useFiltersState from '../../utils/customHooks/useFiltersState';
 
 const FiltersAndOrders = () => {
   const dispatch = useDispatch();
-  const { resetFilter } = useFiltersState()
 
   const handleReset = () => {
-    resetFilter()
     dispatch(resetFilters())
   }
 
