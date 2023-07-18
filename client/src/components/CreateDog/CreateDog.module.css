@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 
 .formContainer {
@@ -18,18 +19,10 @@
     border-radius: 10%;
     box-shadow: inset 2px 2px 50px 10px #034078;
     font-weight: bold;
-    /* overflow-y: auto; Agrega la propiedad overflow-y: auto para agregar una barra de desplazamiento vertical si es necesario */
-
 }
 
 .title {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* margin: 15px 0; Elimina el margen horizontal y deja un margen vertical de 15px */
     color: #fefcff;
-    /* text-align: center; */
-    /* flex: 1; */
     color: #034078;
 }
 
