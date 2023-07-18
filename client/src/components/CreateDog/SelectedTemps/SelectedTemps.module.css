@@ -1,0 +1,40 @@
+.tempsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectedtemp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fefcfb;
+    border-radius: 50%;
+    margin: 5px;
+    padding: 8px 10px 8px 10px;
+    color: black;
+}
+
+
+.btnX {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #034078;
+    color: black;
+    border-radius: 50%;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #fefcfb;
+    font-size: 1.2em;
+    font-weight: 550;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px 13px 0px 13px;
+}
+
+.btnX:hover {
+    background: #034078;
+    color: #fefcfb;
+}

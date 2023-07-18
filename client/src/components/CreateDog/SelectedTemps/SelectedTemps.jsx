@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import style from "./SelectedTemps.module.css";
 
-const SelectedTemps = ({ newDog }) => {  // recibe por props el perro que se esta creando   
+const SelectedTemps = ({ newDog, handleDeleteTemp }) => {  // recibe por props el perro que se esta creando   
   const temperamentsState = useSelector((state) => state.temperaments);
   const [selectedTempsFound, setSelectedTempsFound] = useState([]);
 
@@ -20,7 +21,10 @@ const SelectedTemps = ({ newDog }) => {  // recibe por props el perro que se est
       {selectedTempsFound.length > 0 ? (
         <div>
           {selectedTempsFound.map((temperament) => (
-            <p key={temperament.id}>{temperament.name}</p>
+            <div className={style.tempsContainer}>
+              <p className={style.selectedtemp}key={temperament.id}>{temperament.name}</p>
+              <span onClick={() => { handleDeleteTemp(temperament.id) }} className={style.btnX}>X</span>
+            </div>
           ))}
         </div>
       ) : null}

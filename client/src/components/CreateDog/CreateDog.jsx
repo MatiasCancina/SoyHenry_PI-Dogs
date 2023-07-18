@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import useCreateValidation from "../../utils/customHooks/useCreateValidation";
 import { useEffect } from "react";
 import { getAllTemps } from "../../redux/actions";
-import SelectedTemps from "./SelectedTemps";
-import style from "./CreateDog.module.css";
+import SelectedTemps from "./SelectedTemps/SelectedTemps";
 import Loader from "../Loader/Loader";
+import style from "./CreateDog.module.css";
 
 const CreateDog = () => {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ const CreateDog = () => {
     errors,
     handleInputChange,
     handleInputChangeTemps,
+    handleDeleteTemp,
     handleSubmit,
   } = useCreateValidation();
 
@@ -24,7 +25,7 @@ const CreateDog = () => {
 
   const hasErrors = Object.values(errors).some((value) => value !== ""); //? almacena los errores que vienen del hook de validation
   const noTemperamentsSelected =
-    newDog.temperaments.length === 0 || newDog.temperaments.length > 12; //? validacion de cant de temps
+    newDog.temperaments.length === 0 || newDog.temperaments.length > 4; //? validacion de cant de temps
 
   return (
     <div className={style.container}>
@@ -139,7 +140,7 @@ const CreateDog = () => {
             </select>
           ) : <Loader/>}
         </div>
-        <SelectedTemps newDog={newDog} />
+        <SelectedTemps newDog={newDog} handleDeleteTemp={handleDeleteTemp}/>
         
         <div className={style.submitContainer}>
           {!hasErrors &&
