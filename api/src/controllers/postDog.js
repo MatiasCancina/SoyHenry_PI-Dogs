@@ -1,4 +1,5 @@
 const { Dog, Temperament } = require("../db");
+const { getApiDogs } = require("../handlers/getApiDogs");
 
 const postDog = async (req, res) => {
     const {
@@ -9,6 +10,11 @@ const postDog = async (req, res) => {
         image,
         temperaments,
     } = req.body
+    
+    const apiDogs = await getApiDogs();
+    const apiDogFound = apiDogs.find((dog) => dog.name.toLowerCase() === name.toLowerCase());
+
+    if (apiDogFound) return res.status(400).send('There is already a dog with that name in the API');
 
     try {
         //? Buscamoos si ya existe un perro con el mismo nombre en la base de datos
