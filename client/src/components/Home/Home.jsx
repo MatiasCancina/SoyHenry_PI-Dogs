@@ -12,6 +12,7 @@ const Home = () => {
     const { dogs, count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler } = usePagination()    //destructuring de lo que voy a usar del hook de Pagination
 
     useEffect(() => {
+        // / !dogs.length && dispatch(getAllDogs())
         dispatch(getAllDogs())
         dispatch(getAllTemps())
     }, [dispatch])
