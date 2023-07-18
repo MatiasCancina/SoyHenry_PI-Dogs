@@ -249,16 +249,7 @@ const useCreateValidation = () => {
     const selectedTemperament = Number(e.target.value); //parsea lo que recibe el input porque agrega el id al array de temperamentos como string
 
     const updatedTemperaments = [...newDog.temperaments];
-    // const indexToRemove = updatedTemperaments.indexOf(selectedTemperament); //? guarda el indice de los temperamentos que se van seleccionando
-
-    //? indexOf retorna -1 si no encuentra el indeice indicado
-    // if (indexToRemove !== -1) {
-    //   // Si el temperamento ya está seleccionado, lo eliminamos del estado newDog.temperaments
-    //   updatedTemperaments.splice(indexToRemove, 1);
-    // } else {
-      // Si el temperamento no está seleccionado, lo agregamos al estado newDog.temperaments
       updatedTemperaments.push(selectedTemperament);
-    // }
 
     setNewDog({
       ...newDog,
