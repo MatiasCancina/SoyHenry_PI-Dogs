@@ -5,6 +5,7 @@ import Details from './components/Details/Details';
 import NavBar from './components/NavBar/NavBar';
 import CreateDog from './components/CreateDog/CreateDog';
 import './App.css';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/details/:id' element={<Details />} />
         <Route path='/create' element={<CreateDog />} />
+        <Route path='*' element={<ErrorPage/>}/>
       </Routes>
     </div>
   );
