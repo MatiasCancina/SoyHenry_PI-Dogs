@@ -44,8 +44,6 @@ const updateDog = async (req, res) => {
             }
         });
 
-        if (!updatedDog) return res.status(404).json({ error: "This dog does not exist" });
-
         return res.status(202).json(updatedDog[1][0]); // Enviar el perro actualizado
 
     } catch (error) {
