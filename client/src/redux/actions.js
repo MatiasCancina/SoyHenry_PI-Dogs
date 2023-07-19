@@ -17,15 +17,20 @@ export const TYPES = {
 export const getAllDogs = () => {
     const URL = 'http://localhost:8080/dogs';
 
-    return async (dispatch) => {
-        const { data } = await axios(URL);
+    return (dispatch) => {
+        return axios(URL)
+            .then(({data}) => {
+                return dispatch({
+                    type: TYPES.GET_ALL_DOGS,
+                    payload: data
+                });
+            })
+            .catch((error) => {
+                console.error('Error fetching dogs:', error);
+            });
+    };
+};
 
-        return dispatch({
-            type: TYPES.GET_ALL_DOGS,
-            payload: data
-        })
-    }
-}
 
 export const getAllTemps = () => {
     const URL = 'http://localhost:8080/temperaments';
