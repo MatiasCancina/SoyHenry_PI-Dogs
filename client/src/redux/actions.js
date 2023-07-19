@@ -63,11 +63,12 @@ export const createDog = (dog) => {
         try {
             await axios.post(URL, dog)
 
+            alert(`The dog has been created`);
             return dispatch({
                 type: TYPES.CREATE_DOG
             })
         } catch (error) {
-            alert('That dog already exists')
+            alert(error.response.data)
         }
     }
 }

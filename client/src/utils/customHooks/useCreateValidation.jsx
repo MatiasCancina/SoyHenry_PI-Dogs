@@ -289,7 +289,6 @@ const useCreateValidation = () => {
     const createdDog = transformDog();
     dispatch(createDog(createdDog));
     setNewDog(initialState); //reinicia el formulario despues de crear un perro
-    alert(`${capitalizeFirstLetter(newDog.name)} has been created`);
   };
   return {
     newDog,

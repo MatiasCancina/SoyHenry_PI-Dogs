@@ -24,7 +24,7 @@ const postDog = async (req, res) => {
             },
         });
 
-        if (dbDogs) return res.status(400).send('There is already a dog with that name');
+        if (dbDogs) return res.status(400).send('There is already a dog with that name in the DB');
 
         const newDog = await Dog.create({
             name: name,
