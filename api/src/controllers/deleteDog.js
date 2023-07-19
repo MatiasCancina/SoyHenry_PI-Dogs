@@ -4,11 +4,11 @@ const deleteDog = async (req, res) => {
     const { id } = req.params;
 
     try {
-        if (typeof id === 'number') return res.send('You can not delete this dog') // no se puede eliminar un perro de la api (id = integer)
+        if (typeof id === 'number') return res.json({ error: 'You can not delete this dog' }) // no se puede eliminar un perro de la api (id = integer)
 
         const foundDog = await Dog.findByPk(id)
 
-        if (!foundDog.id) return res.send('This dog does not exist')
+        if (!foundDog.id) return res.json({ error: 'This dog does not exist' })
 
         foundDog.destroy({
             where: {
