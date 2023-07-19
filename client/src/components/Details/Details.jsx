@@ -29,22 +29,22 @@ const Details = () => {
   const apiAndDbTempsSeparated = apiAndDbTemps?.split(",").join(" || ");
 
   const handleUpdateName = async () => {
-    try {
-      // Actualizamos el nombre localmente sin esperar a la respuesta de la API
-      setDog((prevDog) => ({  //prevDog es una referencia al estado local de dog
-        ...prevDog,
-        name: newName,
-      }));
+    dispatch(updateDogName(id, newName))
+      .then (async () => {
+        setEditName(false)
 
-      // Llamamos a la acción para actualizar el nombre en el servidor
-      await dispatch(updateDogName(id, newName));
-      setEditName(false)
+        await urlCall();
 
-      // Realizamos una nueva llamada a la API para obtener el objeto actualizado
-      await urlCall();
-    } catch (error) {
-      alert(error.response.data.error);
-    }
+        if (dog.name.toLowerCase() === newName.toLowerCase()) {
+          setDog((prevDog) => ({  //prevDog es una referencia al estado local de dog
+            ...prevDog,
+            name: newName,
+          }));
+        }
+      })
+      .catch((error) => {
+        alert(error.response.data.error);
+      })
   };
 
   return (
