@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react';
 import style from './Loader.module.css';
 
-function Loader() {
+class Loader extends Component {
+  render() {
     return (
-        <div className={style.loader}>
+      <div className={style.loader}>
         <div data-glitch="Loading..." className={style.glitch}>
           Loading...
         </div>
       </div>
-    )
+    );
+  }
 }
 
-export default Loader
+export default Loader;
