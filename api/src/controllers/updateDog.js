@@ -15,6 +15,11 @@ const updateDog = async (req, res) => {
             return res.status(400).json({ error: "Name must be between 3 and 22 letters" });
         }
 
+        const nameRegex = /^[A-Za-z]+$/;
+        if (!name.match(nameRegex)) {
+            return res.status(400).json({ error: "Name must contain only letters" });
+        }
+
         // Verificar si ya existe un perro con el mismo nombre en la base de datos
         const existingDog = await Dog.findOne({ where: { name } });
 
