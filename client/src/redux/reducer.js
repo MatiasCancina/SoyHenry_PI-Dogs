@@ -133,9 +133,7 @@ const rootReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                dogs: action.payload === 'ALL' ?
-                    state.backupDogs :
-                    backupDogsCopy.filter(dog => //se fija en la propiedad temperamentos de la DB y de la API para hacer el filter y mostrarlos
+                dogs: backupDogsCopy.filter(dog => //se fija en la propiedad temperamentos de la DB y de la API para hacer el filter y mostrarlos
                         dog.temperaments ?
                             dog.temperaments.includes(action.payload) :
                             (dog.temperament && dog.temperament.includes(action.payload))
