@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4, // se utiliza para generar un UUID aleatorio cada vez que se crea un nuevo registro en la tabla.
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     name: {
