@@ -1,4 +1,4 @@
-const { Dog, Temperament } = require("../db");
+const { Dog } = require("../db");
 const { getApiDogs } = require("../handlers/getApiDogs");
 
 const postDog = async (req, res) => {
