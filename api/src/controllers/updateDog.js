@@ -11,8 +11,8 @@ const updateDog = async (req, res) => {
             return res.status(400).json({ error: "Name is required" });
         }
 
-        if (name.length < 3 || name.length > 30) {
-            return res.status(400).json({ error: "Name must be between 3 and 30 characters" });
+        if (name.length < 3 || name.length > 22) {
+            return res.status(400).json({ error: "Name must be between 3 and 22 letters" });
         }
 
         // Verificar si ya existe un perro con el mismo nombre en la base de datos
