@@ -34,8 +34,8 @@ const useCreateValidation = () => {
 
   const validation = (e) => {
     // regex para validar el nombre
-    const nameRegex = /^[A-Za-z]{3,30}$/;
-    // El nombre debe tener entre 3 y 30 caracteres y solo puede contener letras.
+    const nameRegex = /^[A-Za-z]{3,22}$/;
+    // El nombre debe tener entre 3 y 22 caracteres y solo puede contener letras.
 
     // regex para validar la URL de la imagen
     const imageRegex =
