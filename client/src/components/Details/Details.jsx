@@ -5,13 +5,14 @@ import axios from "axios";
 import Loader from "../Loader/Loader";
 import { updateDogName } from "../../redux/actions";
 import style from "./Details.module.css";
+import Swal from "sweetalert2";
 
 const Details = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [dog, setDog] = useState({});
   const [newName, setNewName] = useState(""); // Estado local para el nuevo nombre
-  const [editName, setEditName] = useState(false) //estado local para el renderizado del input para actualziar el name
+  const [editName, setEditName] = useState(false); //estado local para el renderizado del input para actualziar el name
 
   const urlCall = async () => {
     const { data } = await axios(`http://localhost:8080/dogs/${id}`);
@@ -30,21 +31,26 @@ const Details = () => {
 
   const handleUpdateName = async () => {
     dispatch(updateDogName(id, newName))
-      .then (async () => {
-        setEditName(false)
+      .then(async () => {
+        setEditName(false);
 
         await urlCall();
 
         if (dog.name.toLowerCase() === newName.toLowerCase()) {
-          setDog((prevDog) => ({  //prevDog es una referencia al estado local de dog
+          setDog((prevDog) => ({
+            //prevDog es una referencia al estado local de dog
             ...prevDog,
             name: newName,
           }));
         }
       })
       .catch((error) => {
-        alert(error.response.data.error);
-      })
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.response.data.error,
+        })
+      });
   };
 
   return (
@@ -52,8 +58,8 @@ const Details = () => {
       {dog ? (
         <div className={style.detailsContainer} key={dog.id}>
           <div className={style.info}>
-            {isNaN(dog.id) ?
-              (editName ? (
+            {isNaN(dog.id) ? (
+              editName ? (
                 <div className={style.editNameContainer}>
                   <input
                     type="text"
@@ -62,16 +68,29 @@ const Details = () => {
                     placeholder="Enter new name"
                     className={style.editNameInput}
                   />
-                  <button onClick={handleUpdateName} className={style.updateBtn}>Update Name</button>
+                  <button
+                    onClick={handleUpdateName}
+                    className={style.updateBtn}
+                  >
+                    Update Name
+                  </button>
                 </div>
-              ) :
+              ) : (
                 <div className={style.nameContainer}>
                   <h1 className={style.name}>{dog.name}</h1>
-                  <button onClick={() => { setEditName(true) }} className={style.editBtn}>Edit Name</button>
+                  <button
+                    onClick={() => {
+                      setEditName(true);
+                    }}
+                    className={style.editBtn}
+                  >
+                    Edit Name
+                  </button>
                 </div>
-              ) :
+              )
+            ) : (
               <h1 className={style.name}>{dog.name}</h1>
-            }
+            )}
             <h3>WEIGHT | {dog.weight}</h3>
             <h3>HEIGHT | {dog.height}</h3>
             <h3>LIFE SPAN | {dog.life_span}</h3>
@@ -87,8 +106,9 @@ const Details = () => {
             />
           </div>
         </div>
-      ) : <Loader />
-      }
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };
